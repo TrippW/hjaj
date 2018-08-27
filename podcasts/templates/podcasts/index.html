@@ -1,0 +1,37 @@
+{% extends 'podcasts/base.html' %}
+{% block title %}Shows{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+
+{% block head_meta_description %}
+	<meta name="description" content="Discover the wonderful podcasts of the Jake and Josh network! We list each of our shows and host each episode we've produced over the last two years here." />
+{% endblock head_meta_description %}
+
+{% block content %}
+{% if show_list %}
+	<div class='container'>
+			{% for show in show_list %}
+			{% if forloop.first %}<div class="row">{% endif %}
+			<div class="col-xs-4">
+				<div class="well">
+				{% if show.short_name %}
+					<a href="/podcast/{{ show.short_name }}/">
+				{% else %}
+					<a href="/podcast/{{ show.id }}/">
+				{% endif %}
+						{% load static %}
+						<img src= {% static show.image %} alt= "{{show.name}}" class='img-responsive' >
+					</a>
+					<br/>
+					<p class='text-center'> {{show.name}} </p>
+				</div>
+			</div>
+			
+			{% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+			{% if forloop.last %}</div>{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+{% else %}
+    <p>No shows are available.</p>
+{% endif %}
+{% endblock content %}

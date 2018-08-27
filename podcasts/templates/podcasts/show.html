@@ -1,0 +1,56 @@
+{% extends 'podcasts/base.html' %}
+{% block title %}
+	{% if show %}
+		{{show.name}}
+	{% else %}
+		Unknown Show
+	{% endif %}
+{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+
+{% block content %}
+
+
+{% if episode_list and show %}
+
+{% block head_meta_description %}
+	<meta name="description" content="Learn more about the {{show.name}} podcast produced by Jake and Josh. In {{show.name}}, {{show.description}}" />
+{% endblock head_meta_description %}
+	<div class='container'>
+		<div class='col-xs-6'>
+		{% for episode in episode_list %}
+			<div class='row'>
+				{% if show.short_name %}
+				<a href="/podcast/{{ show.short_name }}/{{ forloop.revcounter }}/">
+				{% else %}
+				<a href="/podcast/{{ show.id }}/{{ episode.id }}/">
+				{% endif %}
+					<div class='col-xs well'>{{ episode.title }}
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+		</div>
+		<div class='col-xs-6'>
+			<div class='well'>
+				{% load static %}
+				<img src= {% static show.image %} alt= "{{show.name}}" class='img-responsive' >
+				<div class='text-center'>
+					<h3> {{show.name}} </h3>
+				</div>
+				<div>
+					<p> {{show.description}} </p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% else %}
+
+	{% if show %}
+    <p>No episodes are available for {{ show.name }}.</p>
+	{ % else %}
+	<p>You shouldn't be here. Please navigate using the site.</p>
+	{% endif %}
+{% endif %}
+
+{% endblock content %}

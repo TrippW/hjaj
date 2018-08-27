@@ -1,0 +1,33 @@
+{% extends 'podcasts/base.html' %}
+{% block title %}Cast{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+
+{% block head_meta_description %}
+	<meta name="description" content="Come meet the wonderful cast of the Jake and Josh podcast network! Find out where you can talk to them and learn a bit more about them." />
+{% endblock head_meta_description %}
+
+{% block content %}
+{% if cast %}
+	<div class='container'>
+			{% for person in cast %}
+			{% if forloop.first %}<div class="row">{% endif %}
+			<div class="col-xs-4">
+				<div class="well">
+					
+						<a href="/podcast/cast/{{ person.get_url_name }}/">
+							<img class="img-responsive img-circle" src="{{person.image}}"  alt= "image" >
+						</a>
+					
+						<p class='text-center name-text' style='margin: 20px auto;'> {{person.name}} </p>
+				</div>
+			</div>
+			
+			{% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+			{% if forloop.last %}</div>{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+{% else %}
+    <p>No cast are available. Something has gone wrong.</p>
+{% endif %}
+{% endblock content %}

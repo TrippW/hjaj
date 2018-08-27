@@ -1,0 +1,48 @@
+{% extends 'podcasts/base.html' %}
+{% block title %}
+	{% if episode %}
+		{{episode.title}}
+	{% else %}
+		Unknown Episode
+	{% endif %}
+{% endblock title %}
+{% block nav-style %}mkt-nav{% endblock nav-style %}
+
+{% block content %}
+
+{% if episode and show %}
+
+{% block head_meta_description %}
+	<meta name="description" content="In this episode of {{show.name}}, {{episode.description}}" />
+{% endblock head_meta_description %}
+
+<div class='container' width='50%'>
+	<div class="well">
+		<div  style='max-width: 350px;margin: 0 auto; display: table;'>
+			{% load static %}
+			<img src= {% static show.image %} alt= "{{show.name}}" class='img-responsive img-rounded' >
+		</div>
+		<div style="margin: 0 auto; display: table;">
+			<audio controls>
+				<source src = "{{ episode.audio_url }}" type = "audio/x-m4a">
+			</audio>
+		</div>
+		<div class='text-center'>
+			<h2> {{episode.title}} </h2>
+		</div>
+		<div style="margin: 10px 35px;">
+			{% autoescape off %}
+				<p> {{episode.description}} </p>
+			{% endautoescape %}
+		</div>
+	</div>
+<div>
+{% else %}
+	{% if show %}
+    <p>No episodes are available for {{ show.name }}.</p>
+	{ % else %}
+	<p>You shouldn't be here. Please navigate using the site.</p>
+	{% endif %}
+{% endif %}
+
+{% endblock content %}
