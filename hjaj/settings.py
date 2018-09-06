@@ -25,7 +25,9 @@ SECRET_KEY = '$=qr$vl6g6-a@4mh6=6pdvxtqpy4fex(ak%m$(ed#q0g9arbo@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#DEBUG_PROPAGATE_EXCEPTIONS = True
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -118,4 +120,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = ''
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = ( os.path.join('podcasts/static'), )

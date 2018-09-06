@@ -8,14 +8,14 @@
 {% endblock title %}
 {% block nav-style %}mkt-nav{% endblock nav-style %}
 
+
 {% block content %}
-
-
 {% if episode_list and show %}
 
-{% block head_meta_description %}
-	<meta name="description" content="Learn more about the {{show.name}} podcast produced by Jake and Josh. In {{show.name}}, {{show.description}}" />
-{% endblock head_meta_description %}
+	{% block head_meta_description %}
+		<meta name="description" content="{show.description}}" />
+	{% endblock head_meta_description %}
+	
 	<div class='container'>
 		<div class='col-xs-6'>
 		{% for episode in episode_list %}
@@ -45,7 +45,10 @@
 		</div>
 	</div>
 {% else %}
-
+	{% block head_meta_robots %}
+		<meta name="robots" content="noindex">
+	{% endblock head_meta_robots %}
+	
 	{% if show %}
     <p>No episodes are available for {{ show.name }}.</p>
 	{ % else %}

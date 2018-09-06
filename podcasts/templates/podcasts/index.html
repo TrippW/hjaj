@@ -32,6 +32,9 @@
 		</div>
 	</div>
 {% else %}
+	{% block head_meta_robots %}
+		<meta name="robots" content="noindex">
+	{% endblock head_meta_robots %}
     <p>No shows are available.</p>
 {% endif %}
 {% endblock content %}

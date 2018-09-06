@@ -39,7 +39,7 @@ def episode_by_num(request, name, episode_number):
     show_id = verify_get(Show.objects.filter(short_name=name), "Unknown Show").id
 
     ordered_episodes = Episode.objects.all().filter(show__id = show_id).order_by('publish_date','title')
-    if episode_number <= 0 or  episode_number > len(ordered_episodes) :
+    if episode_number <= 0 or episode_number > len(ordered_episodes) :
         raise Http404("Episode does not exist")
     ep_id = ordered_episodes[episode_number-1].id
     return episode(request, show_id, ep_id)

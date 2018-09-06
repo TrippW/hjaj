@@ -7,14 +7,22 @@
     <head>
         <title>{% block title %}Home {% endblock title %} | Hey Jake & Josh</title>
         {% block head_favicon %}
-            <link rel="icon" type="image/png"
-                  href={% static "podcasts/imgs/banner.png" %}>
+            <link rel="icon" type="image/jpg"
+                  href={% static "podcasts/imgs/banner.jpg" %}>
         {% endblock head_favicon %}
         {% block head_meta %}
             {% block head_meta_charset %}
                 <meta http-equiv="Content-Type"
                       content="text/html; charset=utf-8" />
             {% endblock head_meta_charset %}
+			
+			{% block head_meta_robots %}
+			{% endblock head_meta_robots %}
+			
+			{% block head_meta_keywords %}
+				<meta name="keywords" content="Podcast,Entertainment,Jake and Josh,RPG,Actual Play,Power Rangers,Pokemon,Kingdom Hearts">
+			{% endblock head_meta_keywords %}
+			
             {% block head_meta_contentlanguage %}
                 <meta http-equiv="Content-Language" value="en-US" />
             {% endblock head_meta_contentlanguage %}
@@ -59,7 +67,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="/podcast/" style="padding: 0px;"><img src={% static "podcasts/imgs/banner.png" %} width=160px height=50px alt="Hey Jake and Josh"/></a>
+						<a class="navbar-brand" href="/podcast/" style="padding: 0px;"><img src={% static "podcasts/imgs/banner.jpg" %} width=160px height=50px alt="Hey Jake and Josh"/></a>
 					</div>
 					
 					<nav aria-label="Main Navigation">
