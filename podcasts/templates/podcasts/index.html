@@ -12,18 +12,20 @@
 			{% for show in show_list %}
 			{% if forloop.first %}<div class="row">{% endif %}
 			<div class="col-xs-4">
-				<div class="well">
 				{% if show.short_name %}
 					<a href="/podcast/{{ show.short_name }}/">
 				{% else %}
 					<a href="/podcast/{{ show.id }}/">
 				{% endif %}
+					<div class="well">
+
 						{% load static %}
 						<img src= {% static show.image %} alt= "{{show.name}}" class='img-responsive' >
-					</a>
-					<br/>
-					<p class='text-center'> {{show.name}} </p>
-				</div>
+						<br/>
+						<p class='text-center'> {{show.name}} </p>
+					</div>
+				
+				</a>
 			</div>
 			
 			{% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
