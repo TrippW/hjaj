@@ -6,8 +6,7 @@ from .models import Show, Episode, Person
 def verify_get(query_set, error="Something went wrong"):
     if query_set.exists():
         return query_set[0]
-    else:
-        raise Http404(error)
+    raise Http404(error)
 
 def index(request):
     update()
@@ -31,8 +30,8 @@ def show(request, show_id):
     return HttpResponse(template.render(context, request))
 
 def show_by_name(request, name):
-    show_id = verify_get(Show.objects.filter(short_name=name),
-                          "Unknown Show").id
+    show_id = verify_get(Show.objects.filter(short_name=name), \
+                         "Unknown Show").id
 
     return show(request, show_id)
 
