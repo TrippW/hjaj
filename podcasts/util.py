@@ -1,7 +1,7 @@
-"""This module is holds the utility functions for processing and updating
-the website. Only the update function should be called from outside of the
-module. Handles converting RSS to JSON data, checking the timing between
-updates, and adding new shows and episodes.
+"""This module is holds the utility functions for processing and
+updating the website. Only the update function should be called from
+outside of the module. Handles converting RSS to JSON data, checking
+the timing between updates, and adding new shows and episodes.
 """
 
 import calendar
@@ -106,12 +106,12 @@ def add_show(data, rss):
 
 
 def check_last_update(hours=0, minutes=5):
-    """Checks if a feed update should be proccessed. Returns True if an update
-    should continue, or False if it should be halted.
+    """Checks if a feed update should be proccessed. Returns True if an
+    update should continue, or False if it should be halted.
 
-    If an update was started within the last 30 seconds or completed within
-    a provided amount of time, prevents multiple updates
-    from happening at once and lessens the load on the server if there is
+    If an update was started within the last 30 seconds or completed
+    within a provided amount of time, prevents multiple updates from
+    happening at once and lessens the load on the server if there is
     high traffic
     """
     last_update_completed = Log.objects.filter(title="Completed Feed Update")
@@ -175,7 +175,8 @@ def check_all_feeds():
 
 def update(minutes_between_updates=30):
     """Checks and updates the database based on rss feed if it hasn't
-    successfully updated within n time. This process begins the site update
+    successfully updated within n time. This process begins the site
+    update
     """
     if check_last_update(minutes=minutes_between_updates):
         add_new_log("Start Feed Update")
