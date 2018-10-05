@@ -31,7 +31,7 @@ class Log(models.Model):
         return "{} | {}".format(self.title, self.time)
 
 class Episode(models.Model):
-    show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    show = models.ForeignKey(Show, related_name='episode_ids', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
     audio_url = models.CharField(max_length=80)

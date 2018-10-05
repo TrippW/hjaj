@@ -1,3 +1,15 @@
 body {
 	background-color: #ccccff;
 }
+
+#site-wrapper {
+	min-height: calc(100vh - 171px);
+}
+
+#about-box {
+	padding-top: calc(20vh - 71px);
+	min-width: 440px;
+	max-width: 900px;
+	width: 70vw;
+	margin: auto;
+}
